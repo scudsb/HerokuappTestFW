@@ -16,6 +16,7 @@ public class SuiteListener extends SetUpDriver implements ITestListener, IAnnota
     @Override
     public void onTestFailure(ITestResult result) {
        try{
+           logger.debug("Inside onTestFailure");
            String fileName = System.getProperty("user.dir") + config.getProperty("screenshot_folder") +
                    result.getMethod().getMethodName() + ".png";
            File screenshotFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);

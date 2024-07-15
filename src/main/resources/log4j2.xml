@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Configuration xmlns="http://logging.apache.org/log4j/2.0/config" status="DEBUG">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="CONSOLE_PATTERN">%d{HH:mm:ss.SSS} [%t] %-5level - %msg%n</Property>
+    </Properties>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level - %msg%n"/>
+            <PatternLayout pattern=""/>
         </Console>
-        <File name="file" fileName="/Users/thor/IdeaProjects/SeleniumPOMSample/src/main/resources/logs/tests.log">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level - %msg%n"/>
+        <Routing name="classAppender">
+            <Routes pattern="$${event:ThreadName}">
+                <Route>
+                    <RollingFile fileName="./src/main/resources/logs/${event:ThreadName}.log"
+                                 filePattern="./src/main/resources/logs/${event:ThreadName}-%d{MM-dd-yyyy}.log.gz."
+                                 name="${event:Logger}_RollingFile"
+                                 ignoreExceptions="false">
+                        <PatternLayout pattern="${LOG_PATTERN}"/>
+                        <SizeBasedTriggeringPolicy size="20 MB" />
+                    </RollingFile>
+                </Route>
+            </Routes>
+        </Routing>
+        <File name="file" fileName="./src/main/resources/logs/tests.log">
+            <PatternLayout pattern="${CONSOLE_PATTERN}"/>
         </File>
     </Appenders>
     <Loggers>
-        <Root level="info">
+        <Root level="debug">
+            <appender-ref ref="classAppender"/>
             <appender-ref ref="file"/>
+            <appender-ref ref="console"/>
         </Root>
-        <Logger name="org.example" level="debug" additivity="true">
+        <Logger name="org.herokuapp" level="debug" additivity="true">
             <appender-ref ref="console"/>
         </Logger>
     </Loggers>
