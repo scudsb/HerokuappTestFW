@@ -14,7 +14,11 @@
         <classes>
             <class name="testcases.QATests"/>
             <class name="testcases.AddDeleteElementsTest"/>
-            <class name="testcases.BasicAuth"/>
+            <class name="testcases.BasicAuthTest"/>
+            <class name="testcases.BrokenImagesTest"/>
+            <class name="testcases.ContextMenuTest"/>
+            <class name="testcases.DisappearingElementsTest"/>
+            <class name="testcases.DragAndDropTest"/>
         </classes>
     </test>
 </suite>

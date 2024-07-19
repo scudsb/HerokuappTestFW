@@ -21,7 +21,10 @@ public class QATests extends baseTest{
         welcomePage = new WelcomePage(webDriver);
         logger.debug("Inside navigateToWebsite");
         //welcomePage = new WelcomePage(webDriver);
-        welcomePage.verifyPageLoad();
+        String[] headings = welcomePage.verifyPageLoad();
+        Assert.assertEquals(headings[0], "Welcome to the-internet");
+        Assert.assertEquals(headings[1], "Available Examples");
+        logger.info("Heading Assertions complete");
         testLogger.log(Status.PASS, "Welcome page is loaded");
     }
 }

@@ -33,7 +33,7 @@ public class TakeScreenshot{
             File screenshotFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
             String base64 = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.BASE64);
             FileUtils.copyFile(screenshotFile, new File(fileName));
-            //estLogger.log(Status.INFO, name, MediaEntityBuilder.createScreenCaptureFromPath(fileName).build());
+            //testLogger.log(Status.INFO, name, MediaEntityBuilder.createScreenCaptureFromPath(fileName).build());
             testLogger.log(Status.INFO, name, MediaEntityBuilder.createScreenCaptureFromBase64String(base64).build());
         }catch (IOException ex){
             System.out.println("Exception Caught - " + ex.getMessage() + "\n" + Arrays.toString(ex.getStackTrace()));

@@ -48,6 +48,8 @@ public class baseTest {
             extentReport.attachReporter(sparkReporter);
             sparkReporter.config().setTheme(Theme.STANDARD);
             sparkReporter.config().setDocumentTitle(config.getProperty("document_title"));
+            Thread currentThread = Thread.currentThread();
+            currentThread.setName(config.getProperty("report_name") + dateTime.format(dateFormatter));
         }catch(Exception ex){
             logger.error("Exception caught - " + Arrays.toString(ex.getStackTrace()));
         }

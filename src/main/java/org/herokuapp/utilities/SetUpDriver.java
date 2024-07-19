@@ -13,7 +13,6 @@ public class SetUpDriver {
     public static Logger logger = LogManager.getLogger(SetUpDriver.class);
     public static WebDriver webDriver;
     public static Properties config;
-    public static Properties locators;
 
     /**
      * Method to set up the driver based on the browser mentioned in the config file

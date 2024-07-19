@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Configuration xmlns="http://logging.apache.org/log4j/2.0/config" status="DEBUG">
     <Properties>
-        <Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+<!-- printint of %M -Method name & %C class name should not be used unless execution speed is not an issue
+ as it slows down the logger -->
+        <Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} [%t] [%C] [%M] %-5level %logger{36} - %msg%n</Property>
         <Property name="CONSOLE_PATTERN">%d{HH:mm:ss.SSS} [%t] %-5level - %msg%n</Property>
     </Properties>
     <Appenders>
